@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Ultimate Quiz Challenge</title>
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body class="light-mode">
+  <div id="app">
+    <!-- Start Screen -->
+    <div id="start-screen" class="screen">
+      <h1>Ultimate Quiz Challenge</h1>
+      <p>Test your knowledge across various categories. Choose your preferred category and difficulty to begin!</p>
+      
+      <div class="select-container">
+        <label for="category-select" class="sr-only">Select Category</label>
+        <select id="category-select" aria-label="Select quiz category">
+          <option value="General Knowledge">General Knowledge</option>
+          <option value="Science">Science</option>
+          <option value="Sports">Sports</option>
+          <option value="Movies">Movies</option>
+          <option value="History">History</option>
+          <option value="Geography">Geography</option>
+        </select>
+        
+        <label for="difficulty-select" class="sr-only">Select Difficulty</label>
+        <select id="difficulty-select" aria-label="Select quiz difficulty">
+          <option value="easy">Easy</option>
+          <option value="medium">Medium</option>
+          <option value="hard">Hard</option>
+        </select>
+      </div>
+      
+      <button id="start-btn" aria-label="Start quiz">Start Quiz</button>
+      <button id="theme-toggle" aria-label="Toggle dark mode">Toggle Theme</button>
+    </div>
+
+    <!-- Quiz Screen -->
+    <div id="quiz-screen" class="screen hidden">
+      <div class="quiz-container">
+        <div class="quiz-content">
+          <div class="category-display" id="current-category">General Knowledge</div>
+          
+          <div id="question-box" class="fade-in" aria-live="polite">Loading question...</div>
+          
+          <div id="answers-container" role="group" aria-labelledby="question-box"></div>
+        </div>
+        
+        <div class="quiz-sidebar">
+          <div class="sidebar-item">
+            <div class="sidebar-title">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 2C6.48 2 2 6.48 2 12C2 17.52 6.48 22 12 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 12 2ZM10 17L5 12L6.41 10.59L10 14.17L17.59 6.58L19 8L10 17Z" fill="#4361ee"/>
+              </svg>
+              Your Score
+            </div>
+            <div id="score" aria-live="polite">0</div>
+          </div>
+          
+          <div class="sidebar-item">
+            <div class="sidebar-title">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M11.99 2C6.47 2 2 6.48 2 12C2 17.52 6.47 22 11.99 22C17.52 22 22 17.52 22 12C22 6.48 17.52 2 11.99 2ZM12 20C7.58 20 4 16.42 4 12C4 7.58 7.58 4 12 4C16.42 4 20 7.58 20 12C20 16.42 16.42 20 12 20Z" fill="#4361ee"/>
+                <path d="M12.5 7H11V13L16.25 16.15L17 15.08L12.5 12.25V7Z" fill="#4361ee"/>
+              </svg>
+              Time Remaining
+            </div>
+            <div class="timer-container">
+              <div class="timer">
+                <svg viewBox="0 0 80 80">
+                  <circle class="timer-bg" />
+                  <circle class="timer-progress" stroke-dasharray="220" stroke-dashoffset="0" />
+                </svg>
+                <div class="time-left" id="time-left">15</div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="sidebar-item">
+            <div class="sidebar-title">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M12 22C6.477 22 2 17.523 2 12C2 6.477 6.477 2 12 2C17.523 2 22 6.477 22 12C22 17.523 17.523 22 12 22ZM12 20C16.418 20 20 16.418 20 12C20 7.582 16.418 4 12 4C7.582 4 4 7.582 4 12C4 16.418 7.582 20 12 20ZM13 12H17V14H11V7H13V12Z" fill="#4361ee"/>
+              </svg>
+              Progress
+            </div>
+            <div class="progress-container">
+              <div class="progress-info">
+                <span id="question-number">Q 1 / 10</span>
+                <span id="progress-percent">10%</span>
+              </div>
+              <div class="progress-bar">
+                <div class="progress-fill" id="progress-fill" style="width: 10%;"></div>
+              </div>
+            </div>
+          </div>
+          
+          <div class="hint-box" id="hint-box">
+            <strong>Hint:</strong> This is where helpful hints or explanations will appear after you answer a question.
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- End Screen -->
+    <div id="end-screen" class="screen hidden">
+      <h2 id="result-text">Better luck next time!</h2>
+      <div id="final-score">0</div>
+      <p class="score-percentage">You scored <span id="score-percentage">0</span>%</p>
+      
+      <div class="summary-container">
+        <h3 class="summary-title">Quiz Summary</h3>
+        <div class="summary-grid" id="summary-container">
+          <!-- Summary items will be dynamically added here -->
+        </div>
+      </div>
+      
+      <div class="button-group">
+        <button id="restart-btn" aria-label="Restart quiz">Restart Quiz</button>
+        <button id="back-btn" aria-label="Back to start screen">Back to Start</button>
+      </div>
+    </div>
+  </div>
+
+ <script src="script.js"></script>
+</body>
+</html>
